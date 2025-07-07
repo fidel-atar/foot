@@ -1,53 +1,53 @@
-import staticData from '../data/staticData';
+import supabaseService from './supabaseService';
 
-// Simple data service that returns empty data
+// Data service that uses Supabase backend
 export const dataService = {
   // News
-  getNews: () => Promise.resolve(staticData.news),
-  getFeaturedNews: () => Promise.resolve(staticData.news.filter(item => item.is_featured)),
-  getNewsById: (id) => Promise.resolve(staticData.news.find(item => item.id === id)),
+  getNews: () => supabaseService.getNews(),
+  getFeaturedNews: () => supabaseService.getFeaturedNews(),
+  getNewsById: (id) => supabaseService.getNewsById(id),
 
   // Teams
-  getTeams: () => Promise.resolve(staticData.teams),
-  getTeamById: (id) => Promise.resolve(staticData.teams.find(team => team.id === id)),
-  getTeamPlayers: (teamId) => Promise.resolve(staticData.players.filter(player => player.team_id === teamId)),
+  getTeams: () => supabaseService.getTeams(),
+  getTeamById: (id) => supabaseService.getTeamById(id),
+  getTeamPlayers: (teamId) => supabaseService.getTeamPlayers(teamId),
 
   // Players
-  getPlayers: () => Promise.resolve(staticData.players),
-  getPlayerById: (id) => Promise.resolve(staticData.players.find(player => player.id === id)),
+  getPlayers: () => supabaseService.getPlayers(),
+  getPlayerById: (id) => supabaseService.getPlayerById(id),
 
   // Matches
-  getMatches: () => Promise.resolve(staticData.matches),
-  getMatchById: (id) => Promise.resolve(staticData.matches.find(match => match.id === id)),
+  getMatches: () => supabaseService.getMatches(),
+  getMatchById: (id) => supabaseService.getMatchById(id),
 
   // Shop
-  getShopItems: () => Promise.resolve(staticData.shop.items),
-  getShopCategories: () => Promise.resolve(staticData.shop.categories),
-  getShopItemById: (id) => Promise.resolve(staticData.shop.items.find(item => item.id === id)),
+  getShopItems: () => supabaseService.getShopItems(),
+  getShopCategories: () => supabaseService.getShopCategories(),
+  getShopItemById: (id) => supabaseService.getShopItemById(id),
 
   // Stats
-  getStats: () => Promise.resolve(staticData.stats),
+  getStats: () => supabaseService.getStats(),
 
-  // Admin functions (empty)
-  createNews: () => Promise.resolve({ success: true, message: 'تم الإضافة بنجاح' }),
-  updateNews: () => Promise.resolve({ success: true, message: 'تم التحديث بنجاح' }),
-  deleteNews: () => Promise.resolve({ success: true, message: 'تم الحذف بنجاح' }),
+  // Admin functions
+  createNews: (data) => supabaseService.createNews(data),
+  updateNews: (id, data) => supabaseService.updateNews(id, data),
+  deleteNews: (id) => supabaseService.deleteNews(id),
   
-  createTeam: () => Promise.resolve({ success: true, message: 'تم الإضافة بنجاح' }),
-  updateTeam: () => Promise.resolve({ success: true, message: 'تم التحديث بنجاح' }),
-  deleteTeam: () => Promise.resolve({ success: true, message: 'تم الحذف بنجاح' }),
+  createTeam: (data) => supabaseService.createTeam(data),
+  updateTeam: (id, data) => supabaseService.updateTeam(id, data),
+  deleteTeam: (id) => supabaseService.deleteTeam(id),
   
-  createPlayer: () => Promise.resolve({ success: true, message: 'تم الإضافة بنجاح' }),
-  updatePlayer: () => Promise.resolve({ success: true, message: 'تم التحديث بنجاح' }),
-  deletePlayer: () => Promise.resolve({ success: true, message: 'تم الحذف بنجاح' }),
+  createPlayer: (data) => supabaseService.createPlayer(data),
+  updatePlayer: (id, data) => supabaseService.updatePlayer(id, data),
+  deletePlayer: (id) => supabaseService.deletePlayer(id),
   
-  createMatch: () => Promise.resolve({ success: true, message: 'تم الإضافة بنجاح' }),
-  updateMatch: () => Promise.resolve({ success: true, message: 'تم التحديث بنجاح' }),
-  deleteMatch: () => Promise.resolve({ success: true, message: 'تم الحذف بنجاح' }),
+  createMatch: (data) => supabaseService.createMatch(data),
+  updateMatch: (id, data) => supabaseService.updateMatch(id, data),
+  deleteMatch: (id) => supabaseService.deleteMatch(id),
   
-  createShopItem: () => Promise.resolve({ success: true, message: 'تم الإضافة بنجاح' }),
-  updateShopItem: () => Promise.resolve({ success: true, message: 'تم التحديث بنجاح' }),
-  deleteShopItem: () => Promise.resolve({ success: true, message: 'تم الحذف بنجاح' }),
+  createShopItem: (data) => supabaseService.createShopItem(data),
+  updateShopItem: (id, data) => supabaseService.updateShopItem(id, data),
+  deleteShopItem: (id) => supabaseService.deleteShopItem(id),
 };
 
 export default dataService; 
